@@ -11,8 +11,14 @@ const getPageNumberFromLocation = (location, items) => {
 };
 export default class Reader extends Component {
   static propTypes = {
-    history: PropTypes.shape.isRequired,
-    location: PropTypes.shape.isRequired,
+    history: PropTypes.shape({
+      replace: PropTypes.func.isRequired,
+      push: PropTypes.func.isRequired,
+    }).isRequired,
+    location: PropTypes.shape({
+      search: PropTypes.string.isRequired,
+      pathname: PropTypes.string.isRequired,
+    }).isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
